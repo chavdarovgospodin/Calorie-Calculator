@@ -1,13 +1,13 @@
-For Windows
+# H1 For Windows
 
 npm install
 
 react-native run-android
 
-For macOs
+# H1 For macOs
 
 npm install
 
 react-native run-ios
 
-https://facebook.github.io/react-native/docs/getting-started
+# H1 https://facebook.github.io/react-native/docs/getting-started
