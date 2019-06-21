@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 40,
     marginBottom: 25,
-    marginLeft: 40
+    // marginLeft: 40
   },
   container: {
     marginLeft: 40

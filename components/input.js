@@ -8,7 +8,7 @@ const input = props => (
     <TextInput
       style={styles.input}
       placeholder={props.inputText}
-      keyboardType="number-pad"
+      keyboardType="numeric"
       maxLength={3}
     />
   </View>

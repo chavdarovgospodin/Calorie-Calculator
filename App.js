@@ -3,6 +3,8 @@ import { Button } from "react-native";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import Input from "./components/input";
 import Dropdown from "./components/dropdown";
+import RadioButton from "./components/radioButton";
+
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -12,15 +14,20 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+  buttonHandler () {
+    console.log('aaa');
+  }
   render() {
+    
     return (
       <View style={styles.container}>
         <Text style={styles.container}>Calorie Calculator</Text>
+        <RadioButton />
         <Input text="Age" inputText="Type your age here!" />
         <Input text="Height" inputText="Type your height here!" />
         <Input text="Weight" inputText="Type your weight here!" />
         <Dropdown />
-        <Button title="btn" />
+        <Button title="Calculate" onPress={this.buttonHandler}/>
       </View>
     );
   }
@@ -28,6 +35,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 20,
     fontSize: 30,
     justifyContent: "center",
     alignItems: "center",
