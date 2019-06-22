@@ -7,10 +7,10 @@ import RadioForm, {
   RadioButtonLabel
 } from "react-native-simple-radio-button";
 
+
 var gender = [{ label: "Male", value: 0 }, { label: "Female", value: 1 }];
 
 export default class App extends Component {
-
   render() {
     return (
       <View style={styles.container}>
@@ -18,8 +18,8 @@ export default class App extends Component {
         <RadioForm
           radio_props={gender}
           initial={2}
-          onPress={value => {
-            ToastAndroid.show(value.toString(), ToastAndroid.SHORT);
+          onPress={(value) => {
+            this.props.genderAdded(value);
           }}
           buttonSize={20}
           buttonOuterSize={30}

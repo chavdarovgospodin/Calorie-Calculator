@@ -23,7 +23,11 @@ const example = props => {
 
   return (
     <View style={styles.view}>
-      <Dropdown label="Activity" data={data} fontSize={15} itemCount={5} />
+      <Dropdown label="Activity" data={data} fontSize={15} itemCount={5} onChangeText={( value, index, data) => {
+            props.activityAdded(index);
+          }}
+
+      />
     </View>
   );
 };
