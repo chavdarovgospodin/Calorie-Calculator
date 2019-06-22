@@ -15,8 +15,11 @@ const instructions = Platform.select({
 });
 
 class App extends Component {
-  buttonHandler() {
-    
+  calculatedValue = null;
+  calculateButtonHandler() {
+    if(this.props.values) {
+
+    }
     console.log("aaa");
   }
   componentWillReceiveProps() {
@@ -27,11 +30,14 @@ class App extends Component {
       <View style={styles.container}>
         <Text style={styles.container}>Calorie Calculator</Text>
         <RadioButton  genderAdded={this.props.onGenderAdd}/>
-        <Input text="Age" inputText="Type your age here!" />
-        <Input text="Height" inputText="Type your height here!" />
-        <Input text="Weight" inputText="Type your weight here!" />
+        <Input text="Age" inputText="Type your age here!" ageAdded={this.props.onAgeAdd} />
+        <Input text="Height" inputText="Type your height here!" heightAdded={this.props.onHeightAdd}/>
+        <Input text="Weight" inputText="Type your weight here!" weightAdded={this.props.onWeightAdd}/>
         <Dropdown activityAdded={this.props.onActivityAdd}/>
-        <Button title="Calculate" onPress={this.buttonHandler} />
+        {this.calculatedValue}
+        <View style={styles.button}>
+        <Button style={styles.button} title="Calculate" onPress={this.calculateButtonHandler} />
+        </View>
       </View>
     );
   }
@@ -45,7 +51,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGenderAdd: (gen) => dispatch(actions.addGender(gen)),
+    onGenderAdd: (gender) => dispatch(actions.addGender(gender)),
+    onAgeAdd: (age) => dispatch(actions.addAge(age)),
+    onHeightAdd: (height) => dispatch(actions.addHeight(height)),
+    onWeightAdd: (weight) => dispatch(actions.addWeight(weight)),
     onActivityAdd: (act) => dispatch(actions.addActivity(act))
   };
 };
@@ -67,6 +76,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
+  },
+  button: {
+    margin: 20,
   }
 });
 

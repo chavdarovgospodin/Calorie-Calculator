@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 import * as actionTypes from "../actions/actionTypes";
 
-const initialState = {
-  
-};
+const initialState = {};
 
 const womenFormula = {};
 
@@ -19,23 +17,17 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_AGE:
       return {
         ...state,
-        values: {
-          ...state.values
-        }
+        age: action.values
       };
     case actionTypes.ADD_HEIGHT:
       return {
         ...state,
-        values: {
-          ...state.values
-        }
+        height: action.values
       };
     case actionTypes.ADD_WEIGHT:
       return {
         ...state,
-        values: {
-          ...state.values
-        }
+        weight: action.values
       };
     case actionTypes.ADD_ACTIVITY:
       return {

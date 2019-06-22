@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
-import Dropdown from './dropdown';
+import Dropdown from "./dropdown";
 
 const input = props => (
   <View style={styles.container}>
@@ -10,6 +10,16 @@ const input = props => (
       placeholder={props.inputText}
       keyboardType="numeric"
       maxLength={3}
+      onChangeText={value => {
+   
+        if (props.text == "Age") {
+          props.ageAdded(Number(value));
+        } else if (props.text == "Height") {
+          props.heightAdded(Number(value));
+        } else if (props.text == "Weight") {
+          props.weightAdded(Number(value));
+        }
+      }}
     />
   </View>
 );
@@ -26,15 +36,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF"
   },
   container: {
-    flexDirection: 'row', 
-    alignSelf: 'flex-end',
+    flexDirection: "row",
+    alignSelf: "flex-end",
     marginRight: 65
   },
   text: {
     margin: 10,
     fontSize: 15,
     marginBottom: 25,
-    justifyContent: 'center',
+    justifyContent: "center"
   }
 });
 
