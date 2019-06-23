@@ -8,94 +8,46 @@ import RadioButton from "./components/radioButton";
 import Result from "./components/result";
 import styles from "./styles";
 import * as actions from "./actions/actions";
+import * as calculations from "./calculations/calculations";
 
 class App extends Component {
   state = {
     disabled: false,
-    values: null
+    values: null,
+    calculatedValues: null
   };
   results = null;
-  size = 0;
+  valuesSize = 0;
+  
   calculateButtonHandler = () => {
-    this.size = this.props.values ? Object.keys(this.props.values).length : 0;
-    if (this.size === 5) {
-      const values = this.props.values;
-      this.setState(state => {
-        return {
-          values: state.values + values
-        };
-      });
-      this.calculating();
-    }
+    let calculatedValue = null
+    this.valuesSize = this.props.values ? Object.keys(this.props.values).length : 0;
+    const result = calculations.calculate(this.props.values);
+    const deficit = calculations.calorieDeficit(result);
+    const surplus = calculations.calorieSurplus(result);
+    calculatedResults = <Result minimum={result} surplus={surplus} deficit={deficit}/>;
+    this.setState({calculatedValues: calculatedResults})
   };
 
-  calculating = () => {
-    const values = this.props.values;
-    let result = null;
-    let active = null;
+  static getDerivedStateFromProps (nextProps, prevState) {
+    if(nextProps.values !== prevState.values) {
+      return {values: nextProps.values}
+    }
+    else return null; 
+  }
 
-    // const activity = {
-    //   0: 1.2,
-    //   1: 1.375,
-    //   2: 1.55,
-    //   3: 1.75,
-    //   4: 1.9
-    // };
-    const activity = [1.2, 1.375, 1.55, 1.75, 1.9];
-    for (let i = 0; i <= activity.length; i++) {
-      if (values.activity == i) {
-        active = activity[i];
+  validationHandler() {
+    let valuesSize =  this.state.values ? Object.keys(this.state.values).length : 0;
+    if(valuesSize ===5) {
+      if(this.state.values.age === 0 || this.state.values.height === 0 || this.state.values.weight ===0) {
+         return true
       }
+     return false
     }
-    if (values.gender === 0) {
-      //if male
-      result =
-        (66 + (13.7 * values.weight) + (5 * values.height) - (6.8 * values.age)) *
-        active;
-      return result.toFixed(0);
-    }
-    else if (values.gender === 1) { //if female
-     result = (655 + (9.6 * values.weight) + (1.8 * values.height) - (4.7 * values.age)) * active;
-     return result.toFixed(0);
-    }
-  };
-
-  // componentWillReceiveProps = () => {
-  //   console.log(this.props.values);
-  //   this.size = this.props.values ? Object.keys(this.props.values).length : 0;
-  //   if (this.size === 5) {
-  //     const values = this.props.values;
-  //     if (values.age === 0 || values.weight === 0 || values.height === 0) {
-  //       this.setState(state => {
-  //         return {
-  //           disabled: (state.disabled = true)
-  //         };
-  //       });
-  //     } else {
-  //       this.setState(state => {
-  //         return {
-  //           disabled: (state.disabled = false)
-  //         };
-  //       });
-  //     }
-
-  //   } else {
-  //     this.setState(state => {
-  //       return {
-  //         disabled: (state.disabled = true)
-  //       };
-  //     });
-  //   }
-  // }; //TODO
+    else return true;
+  }
 
   render() {
-    let calculatedValue = null;
-    if (this.state.values) {
-      let res = this.calculating();
-      calculatedValue = <Result text={res} />;
-    } else {
-      calculatedValue = null;
-    }
     return (
       <View style={styles.container}>
         <Text style={styles.container}>Calorie Calculator</Text>
@@ -116,13 +68,13 @@ class App extends Component {
           weightAdded={this.props.onWeightAdd}
         />
         <Dropdown activityAdded={this.props.onActivityAdd} />
-        {calculatedValue}
+        {this.state.calculatedValues}
         <View style={styles.button}>
           <Button
             style={styles.button}
             title="Calculate"
             onPress={this.calculateButtonHandler}
-            disabled={this.state.disabled}
+            disabled={this.validationHandler()}
           />
         </View>
       </View>
@@ -143,7 +95,6 @@ const mapDispatchToProps = dispatch => {
     onHeightAdd: height => dispatch(actions.addHeight(height)),
     onWeightAdd: weight => dispatch(actions.addWeight(weight)),
     onActivityAdd: act => dispatch(actions.addActivity(act)),
-    onResultCalculate: () => dispatch(actions.calculateMale)
   };
 };
 

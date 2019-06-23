@@ -1,6 +1,5 @@
 import React from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
-import Dropdown from "./dropdown";
 
 const input = props => (
   <View style={styles.container}>
@@ -11,7 +10,6 @@ const input = props => (
       keyboardType="numeric"
       maxLength={3}
       onChangeText={value => {
-   
         if (props.text == "Age") {
           props.ageAdded(Number(value));
         } else if (props.text == "Height") {

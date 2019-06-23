@@ -1,8 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Dropdown } from "react-native-material-dropdown";
 
-const example = props => {
+const dropdown = props => {
   let data = [
     {
       value: "Sedetary: little or no exercise"
@@ -23,10 +23,14 @@ const example = props => {
 
   return (
     <View style={styles.view}>
-      <Dropdown label="Activity" data={data} fontSize={15} itemCount={5} onChangeText={( value, index, data) => {
-            props.activityAdded(index);
-          }}
-
+      <Dropdown
+        label="Activity"
+        data={data}
+        fontSize={15}
+        itemCount={5}
+        onChangeText={(value, index, data) => {
+          props.activityAdded(index);
+        }}
       />
     </View>
   );
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   view: {
     width: 250,
     height: 40,
-    marginBottom: 25,
+    marginBottom: 25
     // marginLeft: 40
   },
   container: {
@@ -44,4 +48,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default example;
+export default dropdown;

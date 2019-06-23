@@ -34,17 +34,3 @@ export const addActivity = activity => {
     values: activity
   };
 };
-
-export const calculateMale = result => {
-  return {
-    type: actionTypes.CALCULATE_MALE,
-    results: result
-  };
-};
-
-export const calculateFemale = result => {
-  return {
-    type: actionTypes.CALCULATE_FEMALE,
-    results: result
-  };
-};
