@@ -20,7 +20,7 @@ class App extends Component {
   valuesSize = 0;
   
   calculateButtonHandler = () => {
-    let calculatedValue = null
+    let calculatedResults = null
     this.valuesSize = this.props.values ? Object.keys(this.props.values).length : 0;
     const result = calculations.calculate(this.props.values);
     const deficit = calculations.calorieDeficit(result);
@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.container}>Calorie Calculator</Text>
+        <Text style={styles.text}>Calorie Calculator</Text>
         <RadioButton genderAdded={this.props.onGenderAdd} />
         <Input
           text="Age"

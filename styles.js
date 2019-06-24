@@ -2,11 +2,14 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     fontSize: 30,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#eff5ff",
+    flex: 1
+  },
+  text: {
+    fontSize: 40
   },
   welcome: {
     fontSize: 20,

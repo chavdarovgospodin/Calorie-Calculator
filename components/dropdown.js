@@ -40,12 +40,13 @@ const styles = StyleSheet.create({
   view: {
     width: 250,
     height: 40,
-    marginBottom: 25
+    marginBottom: 25,
+    backgroundColor: "#eff5ff",
     // marginLeft: 40
   },
-  container: {
-    marginLeft: 40
-  }
+  // container: {
+  //   marginLeft: 40
+  // }
 });
 
 export default dropdown;

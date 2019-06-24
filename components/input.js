@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignSelf: "flex-end",
-    marginRight: 65
+    marginRight: 60
   },
   text: {
     margin: 10,

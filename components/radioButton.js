@@ -18,8 +18,8 @@ export default class RadioButton extends Component {
           }}
           buttonSize={20}
           buttonOuterSize={30}
-          selectedButtonColor={"green"}
-          selectedLabelColor={"green"}
+          selectedButtonColor={"blue"}
+          selectedLabelColor={"blue"}
           labelStyle={{ fontSize: 15 }}
           disabled={false}
           formHorizontal={true}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     justifyContent: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#eff5ff"
   },
   text: {
     textAlign: "center",
