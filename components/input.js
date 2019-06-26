@@ -1,5 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
+
+
+class Input extends Component {
+  state = {
+    orderForm: {
+      age: {
+        text: "Type your age here!",
+        placeholder: "Age"
+      },
+      height: {
+        text: "Type your height here!",
+        placeholder: "Height"
+      },
+      weight: {
+        text: "Type your weight here!",
+        placeholder: "Weight"
+      }
+    }
+  };
+
+  validation () {
+    
+  }
+  render() {
+    const formElementsArray = [];
+    
+
+    for (let key in this.state.orderForm) {
+    
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+       
+      });
+    }
+ 
+   
+    let form = (
+      <View>
+        {/* {formElementsArray.map(formElement => (
+          <Text key={formElement.id}>{formElement.config.text}</Text>
+        ))} */}
+        {formElementsArray.map(formElement => (
+       
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            maxLength={3}
+            key={formElement.id}
+            placeholder={formElement.config.placeholder}
+            onChangeText={(text)=>this.props.added(formElement.id,text)}
+          />
+        ))}
+      </View>
+    );
+    return (form);
+  }
+}
 
 const input = props => (
   <View style={styles.container}>
@@ -31,7 +89,8 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     fontSize: 15,
     textAlign: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#F5FCFF",
+    marginTop: 20
   },
   container: {
     flexDirection: "row",
@@ -46,4 +105,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default input;
+export default Input;

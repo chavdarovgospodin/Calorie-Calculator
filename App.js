@@ -10,6 +10,7 @@ import styles from "./styles";
 import * as actions from "./actions/actions";
 import * as calculations from "./calculations/calculations";
 
+
 class App extends Component {
   state = {
     disabled: false,
@@ -38,8 +39,8 @@ class App extends Component {
 
   validationHandler() {
     let valuesSize =  this.state.values ? Object.keys(this.state.values).length : 0;
-    if(valuesSize ===5) {
-      if(this.state.values.age === 0 || this.state.values.height === 0 || this.state.values.weight ===0) {
+    if(valuesSize === 5) {
+      if(this.state.values.age === '' || this.state.values.height === '' || this.state.values.weight ==='') {
          return true
       }
      return false
@@ -53,11 +54,12 @@ class App extends Component {
         <Text style={styles.text}>Calorie Calculator</Text>
         <RadioButton genderAdded={this.props.onGenderAdd} />
         <Input
-          text="Age"
-          inputText="Type your age here!"
-          ageAdded={this.props.onAgeAdd}
+        added={this.props.onValuesAdd}
+          // text="Age"
+          // inputText="Type your age here!"
+          // ageAdded={this.props.onAgeAdd}
         />
-        <Input
+        {/* <Input
           text="Height"
           inputText="Type your height here!"
           heightAdded={this.props.onHeightAdd}
@@ -66,7 +68,7 @@ class App extends Component {
           text="Weight"
           inputText="Type your weight here!"
           weightAdded={this.props.onWeightAdd}
-        />
+        /> */}
         <Dropdown activityAdded={this.props.onActivityAdd} />
         {this.state.calculatedValues}
         <View style={styles.button}>
@@ -91,9 +93,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGenderAdd: gender => dispatch(actions.addGender(gender)),
-    onAgeAdd: age => dispatch(actions.addAge(age)),
-    onHeightAdd: height => dispatch(actions.addHeight(height)),
-    onWeightAdd: weight => dispatch(actions.addWeight(weight)),
+    onValuesAdd: (id,text) => dispatch(actions.addValues(id,text)),
+    //onHeightAdd: height => dispatch(actions.addHeight(height)),
+    //onWeightAdd: weight => dispatch(actions.addWeight(weight)),
     onActivityAdd: act => dispatch(actions.addActivity(act)),
   };
 };
