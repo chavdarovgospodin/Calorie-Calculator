@@ -23,6 +23,7 @@ export default class RadioButton extends Component {
           labelStyle={{ fontSize: 15 }}
           disabled={false}
           formHorizontal={true}
+          radioStyle={{paddingRight: 20}}
         />
       </View>
     );
