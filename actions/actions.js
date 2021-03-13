@@ -44,20 +44,6 @@ export const addAge = age => {
   };
 };
 
-export const addHeight = height => {
-  return {
-    type: actionTypes.ADD_HEIGHT,
-    values: height
-  };
-};
-
-export const addWeight = weight => {
-  return {
-    type: actionTypes.ADD_WEIGHT,
-    values: weight
-  };
-};
-
 export const addActivity = activity => {
   return {
     type: actionTypes.ADD_ACTIVITY,

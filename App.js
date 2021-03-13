@@ -37,14 +37,17 @@ class App extends Component {
     else return null; 
   }
 
-  validationHandler() {
+  validationHandler () {
     let valuesSize =  this.state.values ? Object.keys(this.state.values).length : 0;
+
     if(valuesSize === 5) {
-      if(this.state.values.age === '' || this.state.values.height === '' || this.state.values.weight ==='') {
+      if(this.state.values.age === '' || this.state.values.height === '' || this.state.values.weight === '') {
          return true
       }
+
      return false
     }
+
     else return true;
   }
 
@@ -94,8 +97,6 @@ const mapDispatchToProps = dispatch => {
   return {
     onGenderAdd: gender => dispatch(actions.addGender(gender)),
     onValuesAdd: (id,text) => dispatch(actions.addValues(id,text)),
-    //onHeightAdd: height => dispatch(actions.addHeight(height)),
-    //onWeightAdd: weight => dispatch(actions.addWeight(weight)),
     onActivityAdd: act => dispatch(actions.addActivity(act)),
   };
 };

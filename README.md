@@ -2,12 +2,12 @@
 
 npm install
 
-react-native run-android
+npx react-native run-android
 
 # For macOs
 
 npm install
 
-react-native run-ios
+npx react-native run-ios
 
 # https://facebook.github.io/react-native/docs/getting-started
